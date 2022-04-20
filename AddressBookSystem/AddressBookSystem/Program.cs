@@ -17,7 +17,12 @@ public class Program
                     Console.WriteLine("Enter the details: 1.First Name 2.Last Name 3.Address 4.City 5.State 6.Zip Code 7.Phone number 8.EmailId");
                     addressBook.Display();
                     break;
-                    case 2: 
+                    case 2:
+                    Console.WriteLine("Enter the name to edit");
+                    string name = Console.ReadLine();
+                    addressBook.EditContactInAddressBook( name );
+                    break;
+                    case 3: 
                     default: end = false;
                     break;
             }
