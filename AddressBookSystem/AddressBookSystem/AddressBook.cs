@@ -87,5 +87,18 @@ namespace AddressBookSystem
                 Display();
             }
         }
+        public void DeleteContactFromAddressBook(string name1)
+        {
+            Contact delete = new Contact();
+            foreach(var contact in addressBook)
+            {
+                if (contact.FirstName.Equals(name1))
+                {
+                    delete = contact;
+                }
+            }
+            addressBook.Remove(delete);
+            Display();
+        }
     }
 }
