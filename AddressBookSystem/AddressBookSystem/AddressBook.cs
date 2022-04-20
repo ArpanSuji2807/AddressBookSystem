@@ -9,6 +9,7 @@ namespace AddressBookSystem
     public class AddressBook
     {
         List<Contact> addressBook = new List<Contact>();
+        Dictionary<string,List<Contact>> dict = new Dictionary<string,List<Contact>>();
         public AddressBook()
         {
             Contact address1 = new Contact()
@@ -99,6 +100,15 @@ namespace AddressBookSystem
             }
             addressBook.Remove(delete);
             Display();
+        }
+        public void AddDictionary(string dictName)
+        {
+            if (dict==null)
+            {
+                dict.Add(dictName, addressBook);
+                return;
+            }
+            dict.Add(dictName, addressBook);
         }
     }
 }

@@ -27,7 +27,12 @@ public class Program
                     string name1 = Console.ReadLine();
                     addressBook.DeleteContactFromAddressBook( name1 );
                     break;
-                case 4: 
+                case 4:
+                    Console.WriteLine("Enter the Address Book to add");
+                    string dictName = Console.ReadLine();
+                    addressBook.AddDictionary(dictName);
+                    break;
+                case 5: 
                     default: end = false;
                     break;
             }
