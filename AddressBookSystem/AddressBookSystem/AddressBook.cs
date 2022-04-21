@@ -126,5 +126,28 @@ namespace AddressBookSystem
                 dict.Add(name,addressBook);
             }
         }
+        public void EditDictionary(string name1, string contactName)
+        {
+            foreach(var data in dict)
+            {
+                if (dict.Keys.Equals(name1))
+                {
+                    addressBook = data.Value;
+                    EditContactInAddressBook(contactName);
+                }
+            }
+        }
+        public void DeleteDictionary(string name2, string contactName)
+        {
+            foreach(var data in dict)
+            {
+                if (data.Key.Equals(name2))
+                {
+                    addressBook=data.Value;
+                    DeleteContactFromAddressBook(contactName);
+                }
+            }
+            dict.Remove(name2);
+        }
     }
 }
