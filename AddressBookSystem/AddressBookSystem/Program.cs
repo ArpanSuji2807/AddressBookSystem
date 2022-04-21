@@ -6,7 +6,7 @@ public class Program
     {
         AddressBook addressBook = new AddressBook();
         bool end = true;
-        Console.WriteLine("1.Add new contact\n2.Edit contact\n3.Delete Contact");
+        Console.WriteLine("1.Display the Contacts\n2.Edit contact\n3.Delete Contact\n4.Add Multiple contacts");
         while ( end )
         {
             Console.WriteLine("Take an option to execute");
@@ -14,7 +14,6 @@ public class Program
             switch( option )
             {
                 case 1:
-                    Console.WriteLine("Enter the details: 1.First Name 2.Last Name 3.Address 4.City 5.State 6.Zip Code 7.Phone number 8.EmailId");
                     addressBook.Display();
                     break;
                 case 2:
@@ -32,7 +31,9 @@ public class Program
                     string dictName = Console.ReadLine();
                     addressBook.AddDictionary(dictName);
                     break;
-                case 5: 
+                case 5:
+                    Console.WriteLine("Enter a valid Choice");
+                    break;
                     default: end = false;
                     break;
             }

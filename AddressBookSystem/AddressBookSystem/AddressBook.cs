@@ -12,6 +12,7 @@ namespace AddressBookSystem
         Dictionary<string,List<Contact>> dict = new Dictionary<string,List<Contact>>();
         public AddressBook()
         {
+            Console.WriteLine("Enter the details: 1.First Name 2.Last Name 3.Address 4.City 5.State 6.Zip Code 7.Phone number 8.EmailId");
             Contact address1 = new Contact()
             {
                 FirstName = Console.ReadLine(),
@@ -23,6 +24,7 @@ namespace AddressBookSystem
                 PhoneNumber = Convert.ToInt64(Console.ReadLine()),
                 EmailId = Console.ReadLine()
             };
+            Console.WriteLine("Enter the details: 1.First Name 2.Last Name 3.Address 4.City 5.State 6.Zip Code 7.Phone number 8.EmailId");
             Contact address2 = new Contact()
             {
                 FirstName = Console.ReadLine(),
@@ -54,7 +56,7 @@ namespace AddressBookSystem
             {
                 if (contact.FirstName.Equals(name))
                 {
-                    Console.WriteLine("Enter the Option To Update");
+                    Console.WriteLine("Enter the Option To Update: 1.First Name\n2.Last Name\n3.Address\n4.City\n5.State\n6.ZipCode\n7.Phone Number\n8.Email Id");
                     int option = Convert.ToInt32(Console.ReadLine());
                     switch (option)
                     {
@@ -74,13 +76,13 @@ namespace AddressBookSystem
                             Console.WriteLine("Enter the State to Update");
                             contact.State = Console.ReadLine(); break;
                         case 6:
-                            Console.WriteLine("Enter the Email to Update");
+                            Console.WriteLine("Enter the ZipCode to Update");
                             contact.ZipCode = Convert.ToInt32(Console.ReadLine()); break;
                         case 7:
-                            Console.WriteLine("Enter the Postal to Update");
+                            Console.WriteLine("Enter the Phone number to Update");
                             contact.PhoneNumber = Convert.ToInt64(Console.ReadLine()); break;
                         case 8:
-                            Console.WriteLine("Enter the MobileNumber to Update");
+                            Console.WriteLine("Enter the Email Id to Update");
                             contact.EmailId = Console.ReadLine();
                             break;
                     }
@@ -101,14 +103,28 @@ namespace AddressBookSystem
             addressBook.Remove(delete);
             Display();
         }
-        public void AddDictionary(string dictName)
+        public bool NameExist(string name)
+        {
+            foreach(var data in dict.Keys)
+            {
+                if (data.Equals(name))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public void AddDictionary(string name)
         {
             if (dict==null)
             {
-                dict.Add(dictName, addressBook);
+                dict.Add(name, addressBook);
                 return;
             }
-            dict.Add(dictName, addressBook);
+            if (NameExist(name)==false)
+            {
+                dict.Add(name,addressBook);
+            }
         }
     }
 }
