@@ -46,7 +46,7 @@ namespace AddressBookSystem
         {
             foreach(Contact contact in addressBook)
             {
-                Console.WriteLine(contact.FirstName+" "+contact.LastName+" "+contact.Address+" "+contact.City+" "+contact.State+" "+contact.ZipCode+" "+contact.PhoneNumber+" "+contact.EmailId);
+                Console.WriteLine("1.First Name: "+contact.FirstName+"\n2.Last Name: "+contact.LastName+"\n3.Address: "+contact.Address+"\n4.City: "+contact.City+"\n5.State: "+contact.State+"\n6.Zip Code: "+contact.ZipCode+"\n7.Phone Number: "+contact.PhoneNumber+"\n8.Email-ID "+contact.EmailId+"\n");
             }
         }
         public void EditContactInAddressBook(string name)
