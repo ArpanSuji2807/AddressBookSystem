@@ -33,13 +33,15 @@ public class Program
                     break;
                 case 5:
                     Console.WriteLine("Enter the Address Book to Edit");
-                    string editDictionary = Console.ReadLine();
-                    addressBook.AddDictionary(editDictionary);
+                    string name2 = Console.ReadLine();
+                    string contactName=Console.ReadLine();
+                    addressBook.EditDictionary(name2,contactName);
                     break;
                 case 6:
                     Console.WriteLine("Enter the Address Book to Delete");
+                    string name3 = Console.ReadLine();
                     string deleteDict = Console.ReadLine();
-                    addressBook.AddDictionary(deleteDict);
+                    addressBook.DeleteDictionary(name3,deleteDict);
                     break;
                 case 7:
                     Console.WriteLine("Enter a valid Choice");

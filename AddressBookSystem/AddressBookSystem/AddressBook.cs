@@ -12,17 +12,16 @@ namespace AddressBookSystem
         Dictionary<string,List<Contact>> dict = new Dictionary<string,List<Contact>>();
         public AddressBook()
         {
-            Console.WriteLine("Enter the details: 1.First Name 2.Last Name 3.Address 4.City 5.State 6.Zip Code 7.Phone number 8.EmailId");
             Contact address1 = new Contact()
             {
-                FirstName = Console.ReadLine(),
-                LastName = Console.ReadLine(),
-                Address = Console.ReadLine(),
-                City = Console.ReadLine(),
-                State = Console.ReadLine(),
-                ZipCode = Convert.ToInt32(Console.ReadLine()),
-                PhoneNumber = Convert.ToInt64(Console.ReadLine()),
-                EmailId = Console.ReadLine()
+                FirstName = "Arpan",
+                LastName = "Suji",
+                Address = "Jaldhaka",
+                City = "Darjeeling",
+                State = "West Bengal",
+                EmailId = "abc@gmai.com",
+                ZipCode = 734503,
+                PhoneNumber = 9546112345,
             };
             Console.WriteLine("Enter the details: 1.First Name 2.Last Name 3.Address 4.City 5.State 6.Zip Code 7.Phone number 8.EmailId");
             Contact address2 = new Contact()
@@ -45,14 +44,14 @@ namespace AddressBookSystem
         }
         public void Display()
         {
-            foreach(var contact in addressBook)
+            foreach(Contact contact in addressBook)
             {
                 Console.WriteLine(contact.FirstName+" "+contact.LastName+" "+contact.Address+" "+contact.City+" "+contact.State+" "+contact.ZipCode+" "+contact.PhoneNumber+" "+contact.EmailId);
             }
         }
         public void EditContactInAddressBook(string name)
         {
-            foreach(var contact in addressBook)
+            foreach(Contact contact in addressBook)
             {
                 if (contact.FirstName.Equals(name))
                 {
@@ -93,7 +92,7 @@ namespace AddressBookSystem
         public void DeleteContactFromAddressBook(string name1)
         {
             Contact delete = new Contact();
-            foreach(var contact in addressBook)
+            foreach(Contact contact in addressBook)
             {
                 if (contact.FirstName.Equals(name1))
                 {
