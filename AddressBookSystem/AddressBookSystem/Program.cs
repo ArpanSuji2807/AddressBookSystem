@@ -32,13 +32,13 @@ public class Program
                     addressBook.AddDictionary(dictName);
                     break;
                 case 5:
-                    Console.WriteLine("Enter the Address Book to Edit");
+                    Console.WriteLine("Enter the Dictionary and Name to Edit Dictionary");
                     string name2 = Console.ReadLine();
                     string contactName=Console.ReadLine();
                     addressBook.EditDictionary(name2,contactName);
                     break;
                 case 6:
-                    Console.WriteLine("Enter the Address Book to Delete");
+                    Console.WriteLine("Enter the Dictionary and Name to Delete Dictionary");
                     string name3 = Console.ReadLine();
                     string deleteDict = Console.ReadLine();
                     addressBook.DeleteDictionary(name3,deleteDict);

@@ -9,7 +9,7 @@ namespace AddressBookSystem
     public class AddressBook
     {
         List<Contact> addressBook = new List<Contact>();
-        Dictionary<string,List<Contact>> dict = new Dictionary<string,List<Contact>>();
+        Dictionary<string,List<Contact>> dictionary = new Dictionary<string,List<Contact>>();
         public AddressBook()
         {
             Contact address1 = new Contact()
@@ -46,7 +46,8 @@ namespace AddressBookSystem
         {
             foreach(Contact contact in addressBook)
             {
-                Console.WriteLine("1.First Name: "+contact.FirstName+"\n2.Last Name: "+contact.LastName+"\n3.Address: "+contact.Address+"\n4.City: "+contact.City+"\n5.State: "+contact.State+"\n6.Zip Code: "+contact.ZipCode+"\n7.Phone Number: "+contact.PhoneNumber+"\n8.Email-ID "+contact.EmailId+"\n");
+                Console.WriteLine("The Contact Details:");
+                Console.WriteLine("1.First Name: "+contact.FirstName+"\n2.Last Name: "+contact.LastName+"\n3.Address: "+contact.Address+"\n4.City: "+contact.City+"\n5.State: "+contact.State+"\n6.Zip Code: "+contact.ZipCode+"\n7.Phone Number: "+contact.PhoneNumber+"\n8.Email-ID: "+contact.EmailId+"\n");
             }
         }
         public void EditContactInAddressBook(string name)
@@ -104,7 +105,7 @@ namespace AddressBookSystem
         }
         public bool NameExist(string name)
         {
-            foreach(var data in dict.Keys)
+            foreach(var data in dictionary.Keys)
             {
                 if (data.Equals(name))
                 {
@@ -115,38 +116,41 @@ namespace AddressBookSystem
         }
         public void AddDictionary(string name)
         {
-            if (dict==null)
+            if (dictionary==null)
             {
-                dict.Add(name, addressBook);
+                dictionary.Add(name, addressBook);
                 return;
             }
             if (NameExist(name)==false)
             {
-                dict.Add(name,addressBook);
+                dictionary.Add(name,addressBook);
             }
+            Display();
         }
         public void EditDictionary(string name1, string contactName)
         {
-            foreach(var data in dict)
+            foreach(var data in dictionary)
             {
-                if (dict.Keys.Equals(name1))
+                if (data.Key.Equals(name1))
                 {
                     addressBook = data.Value;
-                    EditContactInAddressBook(contactName);
                 }
             }
+            EditContactInAddressBook(contactName);
+            Display();
         }
         public void DeleteDictionary(string name2, string contactName)
         {
-            foreach(var data in dict)
+            foreach(var data in dictionary)
             {
                 if (data.Key.Equals(name2))
                 {
                     addressBook=data.Value;
-                    DeleteContactFromAddressBook(contactName);
                 }
             }
-            dict.Remove(name2);
+            DeleteContactFromAddressBook(contactName);
+            dictionary.Remove(name2);
+            Display();
         }
     }
 }
