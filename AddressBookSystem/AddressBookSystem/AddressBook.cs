@@ -38,31 +38,18 @@ namespace AddressBookSystem
             addressBook.Add(address1);
             addressBook.Add(address2);
         }
-        public void AddNewUniqueContactToAddressBook(string firstName,string lastName)
+        public void AddNewUniqueContactDetailsToAddressBook(string firstName,string lastName)
         {
             foreach (Contact contact in addressBook)
             {
-                if(contact.FirstName != firstName && contact.LastName!=lastName)
-                {
-                    Console.WriteLine("Enter the details: 1.First Name 2.Last Name 3.Address 4.City 5.State 6.Zip Code 7.Phone number 8.EmailId");
-                    Contact address3 = new Contact()
-                    {
-                        FirstName = Console.ReadLine(),
-                        LastName = Console.ReadLine(),
-                        Address = Console.ReadLine(),
-                        City = Console.ReadLine(),
-                        State = Console.ReadLine(),
-                        ZipCode = Convert.ToInt32(Console.ReadLine()),
-                        PhoneNumber = Convert.ToInt64(Console.ReadLine()),
-                        EmailId = Console.ReadLine(),
-                    };
-                    addressBook.Add(address3);
-                    Display();
-                }
-                else
+                if(contact.FirstName == firstName && contact.LastName==lastName)
                 {
                     Console.WriteLine("********WARNING*********\nIt is a Duplicate Name\nEnter the adresss with different Name of a person");
                     EditContactInAddressBook(firstName, lastName);
+                }
+                else
+                {
+                    Display();
                 }
             }
         }

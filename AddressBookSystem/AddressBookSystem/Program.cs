@@ -18,7 +18,7 @@ public class Program
                     string firstName = Console.ReadLine();
                     Console.WriteLine("Enter the last name");
                     string lastName = Console.ReadLine();
-                    addressBook.AddNewUniqueContactToAddressBook(firstName, lastName);
+                    addressBook.AddNewUniqueContactDetailsToAddressBook(firstName, lastName);
                     break;
                 case 2:
                     Console.WriteLine("Enter the firstName to edit");
