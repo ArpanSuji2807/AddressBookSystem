@@ -55,7 +55,7 @@ public class Program
                 case 8:
                     Console.WriteLine("City Name");
                     string cityName = Console.ReadLine();
-                    addressBook.SearchPersonInCity(cityName);
+                    addressBook.ViewPersonByCity(cityName);
                     break;
                 case 9:
                     Console.WriteLine("Enter a valid Choice");

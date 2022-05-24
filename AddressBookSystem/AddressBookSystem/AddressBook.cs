@@ -163,7 +163,7 @@ namespace AddressBookSystem
             dictionary.Remove(name2);
             Display();
         }
-        public void SearchPersonInCity(string cityName)
+        public void ViewPersonByCity(string cityName)
         {
             foreach(var list in addressBook)
             {
