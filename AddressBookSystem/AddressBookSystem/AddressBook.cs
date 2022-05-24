@@ -38,9 +38,33 @@ namespace AddressBookSystem
             addressBook.Add(address1);
             addressBook.Add(address2);
         }
-        public void AddNewContactToAddressBook(Contact contact)
+        public void AddNewUniqueContactToAddressBook(string firstName,string lastName)
         {
-            addressBook.Add(contact);
+            foreach (Contact contact in addressBook)
+            {
+                if(contact.FirstName != firstName && contact.LastName!=lastName)
+                {
+                    Console.WriteLine("Enter the details: 1.First Name 2.Last Name 3.Address 4.City 5.State 6.Zip Code 7.Phone number 8.EmailId");
+                    Contact address3 = new Contact()
+                    {
+                        FirstName = Console.ReadLine(),
+                        LastName = Console.ReadLine(),
+                        Address = Console.ReadLine(),
+                        City = Console.ReadLine(),
+                        State = Console.ReadLine(),
+                        ZipCode = Convert.ToInt32(Console.ReadLine()),
+                        PhoneNumber = Convert.ToInt64(Console.ReadLine()),
+                        EmailId = Console.ReadLine(),
+                    };
+                    addressBook.Add(address3);
+                    Display();
+                }
+                else
+                {
+                    Console.WriteLine("********WARNING*********\nIt is a Duplicate Name\nEnter the adresss with different Name of a person");
+                    EditContactInAddressBook(firstName, lastName);
+                }
+            }
         }
         public void Display()
         {
@@ -50,11 +74,11 @@ namespace AddressBookSystem
                 Console.WriteLine("1.First Name: "+contact.FirstName+"\n2.Last Name: "+contact.LastName+"\n3.Address: "+contact.Address+"\n4.City: "+contact.City+"\n5.State: "+contact.State+"\n6.Zip Code: "+contact.ZipCode+"\n7.Phone Number: "+contact.PhoneNumber+"\n8.Email-ID: "+contact.EmailId+"\n");
             }
         }
-        public void EditContactInAddressBook(string name)
+        public void EditContactInAddressBook(string firstName,string lastName)
         {
-            foreach(Contact contact in addressBook)
+            foreach (Contact contact in addressBook)
             {
-                if (contact.FirstName.Equals(name))
+                if (contact.FirstName.Equals(firstName) && contact.LastName.Equals(lastName))
                 {
                     Console.WriteLine("Enter the Option To Update: 1.First Name\n2.Last Name\n3.Address\n4.City\n5.State\n6.ZipCode\n7.Phone Number\n8.Email Id");
                     int option = Convert.ToInt32(Console.ReadLine());
@@ -136,7 +160,7 @@ namespace AddressBookSystem
                     addressBook = data.Value;
                 }
             }
-            EditContactInAddressBook(contactName);
+            EditContactInAddressBook(name1,contactName);
             Display();
         }
         public void DeleteDictionary(string name2, string contactName)
