@@ -163,5 +163,15 @@ namespace AddressBookSystem
             dictionary.Remove(name2);
             Display();
         }
+        public void SearchPersonInCity(string cityName)
+        {
+            foreach(var list in addressBook)
+            {
+                if(list.City.Equals(cityName))
+                {   
+                        Console.WriteLine(list.FirstName + " " + list.LastName + " " +list.EmailId+" "+list.PhoneNumber+" "+list.City+" "+list.State+" "+list.ZipCode);   
+                }
+            }
+        }
     }
 }

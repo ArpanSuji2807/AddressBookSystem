@@ -6,7 +6,7 @@ public class Program
     {
         AddressBook addressBook = new AddressBook();
         bool end = true;
-        Console.WriteLine("2.Add a new unique contact details\n2.Edit contact\n3.Delete Contact\n4.Add Multiple contacts\n5.Edit Dictionary\n6.Delete Dictionary");
+        Console.WriteLine("1.Add a new unique contact details\n2.Display\n3.Edit contact\n4.Delete Contact\n5.Add Multiple contacts\n6.Edit Dictionary\n7.Delete Dictionary\n8.Search a person in a city");
         while ( end )
         {
             Console.WriteLine("Take an option to execute");
@@ -21,35 +21,43 @@ public class Program
                     addressBook.AddNewUniqueContactDetailsToAddressBook(firstName, lastName);
                     break;
                 case 2:
+                    addressBook.Display();
+                    break;
+                case 3:
                     Console.WriteLine("Enter the firstName to edit");
                     string name = Console.ReadLine();
                     Console.WriteLine("Enter the last name");
                     string name2 = Console.ReadLine();
                     addressBook.EditContactInAddressBook(name,name2);
                     break;
-                case 3:
+                case 4:
                     Console.WriteLine("Enter the name to delete");
                     string name1 = Console.ReadLine();
                     addressBook.DeleteContactFromAddressBook( name1 );
                     break;
-                case 4:
+                case 5:
                     Console.WriteLine("Enter the Address Book to add");
                     string dictName = Console.ReadLine();
                     addressBook.AddDictionary(dictName);
                     break;
-                case 5:
+                case 6:
                     Console.WriteLine("Enter the Dictionary and Name to Edit Dictionary");
                     string name3 = Console.ReadLine();
                     string contactName=Console.ReadLine();
                     addressBook.EditDictionary(name3,contactName);
                     break;
-                case 6:
+                case 7:
                     Console.WriteLine("Enter the Dictionary and Name to Delete Dictionary");
                     string name4 = Console.ReadLine();
                     string deleteDict = Console.ReadLine();
                     addressBook.DeleteDictionary(name4,deleteDict);
                     break;
-                case 7:
+                case 8:
+                    Console.WriteLine("City Name");
+                    string cityName = Console.ReadLine();
+                    addressBook.SearchPersonInCity(cityName);
+                    break;
+                case 9:
                     Console.WriteLine("Enter a valid Choice");
                     break;
                     default: end = false;
