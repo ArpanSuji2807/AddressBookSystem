@@ -23,17 +23,16 @@ namespace AddressBookSystem
                 ZipCode = 734503,
                 PhoneNumber = 9546112345,
             };
-            Console.WriteLine("Enter the details: 1.First Name 2.Last Name 3.Address 4.City 5.State 6.Zip Code 7.Phone number 8.EmailId");
             Contact address2 = new Contact()
             {
-                FirstName = Console.ReadLine(),
-                LastName = Console.ReadLine(),
-                Address = Console.ReadLine(),
-                City = Console.ReadLine(),
-                State = Console.ReadLine(),
-                ZipCode = Convert.ToInt32(Console.ReadLine()),
-                PhoneNumber = Convert.ToInt64(Console.ReadLine()),
-                EmailId = Console.ReadLine(),
+                FirstName = "Raju",
+                LastName = "Gupta",
+                Address = "Kalimpong",
+                City = "Darjeeling",
+                State = "West Bengal",
+                ZipCode = 734003,
+                PhoneNumber = 25646789,
+                EmailId ="abc@gmail.com",
             };
             addressBook.Add(address1);
             addressBook.Add(address2);
@@ -163,13 +162,53 @@ namespace AddressBookSystem
             dictionary.Remove(name2);
             Display();
         }
-        public void ViewPersonByCity(string cityName)
+        public void SearchPersonInCity(string cityName)
         {
             foreach(var list in addressBook)
             {
                 if(list.City.Equals(cityName))
                 {   
                         Console.WriteLine(list.FirstName + " " + list.LastName + " " +list.EmailId+" "+list.PhoneNumber+" "+list.City+" "+list.State+" "+list.ZipCode);   
+                }
+            }
+        }
+        public void ViewPersonByCity(string city)
+        {
+            Dictionary<string, string> personWithCity = new Dictionary<string, string>();
+            //Console.WriteLine("Person\tCity");
+            //Console.WriteLine();
+            personWithCity.Add("Arpan", "Darjeeling");
+            personWithCity.Add("Ravi", "Kolkata");
+            personWithCity.Add("Raju", "Siliguri");
+            personWithCity.Add("Subham", "Malda");
+            personWithCity.Add("Samir", "Hyderabad");
+            personWithCity.Add("Ritesh", "Kolkata");
+            foreach (var data in personWithCity)
+            {
+                //Console.WriteLine(data.Key+"\t"+ data.Value);
+                if (city.Contains(data.Value))
+                {
+                    Console.WriteLine("The persons in the city are:" + data.Key + " ");
+                }
+            }
+        }
+        public void ViewPersonByState(string state)
+        {
+            Dictionary<string, string> personWithState = new Dictionary<string, string>();
+            //Console.WriteLine("Person\tState");
+            //Console.WriteLine();
+            personWithState.Add("Arpan", "West Bengal");
+            personWithState.Add("Ravi", "Jharkhand");
+            personWithState.Add("Raju", "Telengana");
+            personWithState.Add("Subham", "Maharastra");
+            personWithState.Add("Samir", "West Bengal");
+            personWithState.Add("Ritesh", "Telengana");
+            foreach (var data in personWithState)
+            {
+                //Console.WriteLine(data.Key+"\t"+ data.Value);
+                if (state.Contains(data.Value))
+                {
+                    Console.WriteLine("The persons in the State are:" + data.Key);
                 }
             }
         }

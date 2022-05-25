@@ -6,7 +6,7 @@ public class Program
     {
         AddressBook addressBook = new AddressBook();
         bool end = true;
-        Console.WriteLine("1.Add a new unique contact details\n2.Display\n3.Edit contact\n4.Delete Contact\n5.Add Multiple contacts\n6.Edit Dictionary\n7.Delete Dictionary\n8.Search a person in a city");
+        Console.WriteLine("1.Add a new unique contact details\n2.Display\n3.Edit contact\n4.Delete Contact\n5.Add Multiple contacts\n6.Edit Dictionary\n7.Delete Dictionary\n8.Search a person in a city\n9.View all the persons by City\n10.View all the persons by State");
         while ( end )
         {
             Console.WriteLine("Take an option to execute");
@@ -55,9 +55,19 @@ public class Program
                 case 8:
                     Console.WriteLine("City Name");
                     string cityName = Console.ReadLine();
-                    addressBook.ViewPersonByCity(cityName);
+                    addressBook.SearchPersonInCity(cityName);
                     break;
                 case 9:
+                    Console.WriteLine("Enter the name of a city");
+                    string nameOfCity = Console.ReadLine();
+                    addressBook.ViewPersonByCity(nameOfCity);
+                    break;
+                case 10:
+                    Console.WriteLine("Enter the name of the state");
+                    string nameOfState = Console.ReadLine();
+                    addressBook.ViewPersonByCity(nameOfState);
+                    break;
+                case 11:
                     Console.WriteLine("Enter a valid Choice");
                     break;
                     default: end = false;
