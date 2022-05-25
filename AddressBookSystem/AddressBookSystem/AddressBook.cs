@@ -212,5 +212,16 @@ namespace AddressBookSystem
                 }
             }
         }
+        public void ViewPhoneNumbersByCity(string city)
+        {
+            foreach(var data in addressBook)
+            {
+                if(data.City.Contains(city))
+                {
+                    Console.WriteLine("Name\tPhone Number");
+                    Console.WriteLine(data.FirstName+"\t"+data.PhoneNumber);
+                }
+            }
+        }
     }
 }
