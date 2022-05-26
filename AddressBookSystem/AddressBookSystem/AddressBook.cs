@@ -10,6 +10,7 @@ namespace AddressBookSystem
     {
         List<Contact> addressBook = new List<Contact>();
         Dictionary<string,List<Contact>> dictionary = new Dictionary<string,List<Contact>>();
+        Dictionary<string, string> personWithCity = new Dictionary<string, string>();
         public AddressBook()
         {
             Contact address1 = new Contact()
@@ -174,7 +175,6 @@ namespace AddressBookSystem
         }
         public void ViewPersonByCity(string city)
         {
-            Dictionary<string, string> personWithCity = new Dictionary<string, string>();
             //Console.WriteLine("Person\tCity");
             //Console.WriteLine();
             personWithCity.Add("Arpan", "Darjeeling");
@@ -212,14 +212,17 @@ namespace AddressBookSystem
                 }
             }
         }
-        public void ViewPhoneNumbersByCity(string city)
+        public void PersonCountByCity()
         {
-            foreach(var data in addressBook)
+            Console.WriteLine("Enter the name of the city");
+            string nameOfCity = Console.ReadLine();
+            ViewPersonByCity(nameOfCity);
+            foreach (var data in personWithCity)
             {
-                if(data.City.Contains(city))
+                if(data.Value.Contains(nameOfCity))
                 {
-                    Console.WriteLine("Name\tPhone Number");
-                    Console.WriteLine(data.FirstName+"\t"+data.PhoneNumber);
+                    var count = personWithCity.Where(x=>x.Value.ToLower().Equals(nameOfCity)).Count();
+                    Console.WriteLine(count);
                 }
             }
         }

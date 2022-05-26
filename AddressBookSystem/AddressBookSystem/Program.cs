@@ -68,9 +68,7 @@ public class Program
                     addressBook.ViewPersonByState(nameOfState);
                     break;
                 case 11:
-                    Console.WriteLine("Enter the name of the city");
-                    string city = Console.ReadLine();
-                    addressBook.ViewPhoneNumbersByCity(city);
+                    addressBook.PersonCountByCity();
                     break;
                 case 12:
                     Console.WriteLine("Enter a valid Choice");
