@@ -210,5 +210,32 @@ namespace AddressBookSystem
                 Console.WriteLine(data.FirstName + " " + data.LastName + " " + data.PhoneNumber+" "+data.Address+" "+data.EmailId+" "+data.State+" "+data.ZipCode);
             }
         }
+        public void SortEntriesByStateOrCity()
+        {
+            Console.WriteLine("1.Sorting by City name\n2.Sorting by State name");
+            bool check = true;
+            while(check)
+            {
+                Console.WriteLine("Enter your choice:");
+                int opt = Convert.ToInt32(Console.ReadLine());
+                switch(opt)
+                {
+                    case 1:
+                        var result = addressBook.OrderBy(x => x.City).ToList();
+                        foreach(var data in result)
+                        {
+                            Console.WriteLine(data.FirstName + " " + data.LastName + " " + data.PhoneNumber + " " + data.Address + " " + data.EmailId + " " + data.State + " " + data.ZipCode);
+                        }
+                        break;
+                    case 2:
+                        var value = addressBook.OrderBy(x => x.State).ToList();
+                        foreach (var data in value)
+                        {
+                            Console.WriteLine(data.FirstName + " " + data.LastName + " " + data.PhoneNumber + " " + data.Address + " " + data.EmailId + " " + data.State + " " + data.ZipCode);
+                        }
+                        break;
+                }
+            }
+        }
     }
 }
