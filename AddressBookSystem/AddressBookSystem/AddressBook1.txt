@@ -1,0 +1,7 @@
+﻿﻿FirstName,LastName,Address,City,State,Email,postalCode,mobileNumber
+Arpan,Suji,Darjeeling,Siliguri,West Bengal,ap@gmail.com,234565,8546123455
+Rajen,Suji,Kalimpong,Siliguri,West Bengal,ap@gmail.com,234565,8546123455
+Santosh,Ranapaheli,Siliguri,Siliguri,West Bengal,ap@gmail.com,234565,8546123455
+Saraswatai,Ranapaheli,Darjeeling,Siliguri,West Bengal,ap@gmail.com,234565,8546123455
+Ravi,Rana,Darjeeling,Siliguri,West Bengal,ap@gmail.com,234565,8546123455
+Krishna,Suji,Darjeeling,Siliguri,West Bengal,ap@gmail.com,234565,8546123455

@@ -10,6 +10,7 @@ namespace AddressBookSystem
     {
         List<Contact> addressBook = new List<Contact>();
         Dictionary<string,List<Contact>> dictionary = new Dictionary<string,List<Contact>>();
+        const string TXT_FILE_PATH = @"D:\PracticeProblem\AddressBookSystem\AddressBookSystem\AddressBookSystem\AddressBook1.txt";
         public AddressBook()
         {
             Contact address1 = new Contact()
@@ -234,6 +235,29 @@ namespace AddressBookSystem
                             Console.WriteLine(data.FirstName + " " + data.LastName + " " + data.PhoneNumber + " " + data.Address + " " + data.EmailId + " " + data.State + " " + data.ZipCode);
                         }
                         break;
+                }
+            }
+        }
+        public void ReadOrWriteAddressBook()
+        {
+            if (File.Exists(TXT_FILE_PATH))
+            {
+                StreamReader reader = new StreamReader(TXT_FILE_PATH);
+                try
+                {
+                    string s = "";
+                    while ((s = reader.ReadLine()) != null)
+                    {
+                        Console.WriteLine(s);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    reader.Close();
                 }
             }
         }

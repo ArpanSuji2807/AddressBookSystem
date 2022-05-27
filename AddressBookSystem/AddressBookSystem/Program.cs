@@ -77,6 +77,9 @@ public class Program
                     addressBook.SortEntriesByStateOrCity();
                     break;
                 case 14:
+                    addressBook.ReadOrWriteAddressBook();
+                    break;
+                case 15:
                     Console.WriteLine("Enter a valid Choice");
                     break;
                     default: end = false;
