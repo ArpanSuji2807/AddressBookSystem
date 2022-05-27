@@ -10,7 +10,6 @@ namespace AddressBookSystem
     {
         List<Contact> addressBook = new List<Contact>();
         Dictionary<string,List<Contact>> dictionary = new Dictionary<string,List<Contact>>();
-        Dictionary<string, string> personWithCity = new Dictionary<string, string>();
         public AddressBook()
         {
             Contact address1 = new Contact()
@@ -18,7 +17,7 @@ namespace AddressBookSystem
                 FirstName = "Arpan",
                 LastName = "Suji",
                 Address = "Jaldhaka",
-                City = "Darjeeling",
+                City = "Kolkata",
                 State = "West Bengal",
                 EmailId = "abc@gmai.com",
                 ZipCode = 734503,
@@ -29,11 +28,11 @@ namespace AddressBookSystem
                 FirstName = "Raju",
                 LastName = "Gupta",
                 Address = "Kalimpong",
-                City = "Darjeeling",
-                State = "West Bengal",
+                City = "Hyderabad",
+                State = "Telengana",
+                EmailId = "abc@gmail.com",
                 ZipCode = 734003,
                 PhoneNumber = 25646789,
-                EmailId ="abc@gmail.com",
             };
             addressBook.Add(address1);
             addressBook.Add(address2);
@@ -175,55 +174,40 @@ namespace AddressBookSystem
         }
         public void ViewPersonByCity(string city)
         {
-            //Console.WriteLine("Person\tCity");
-            //Console.WriteLine();
-            personWithCity.Add("Arpan", "Darjeeling");
-            personWithCity.Add("Ravi", "Kolkata");
-            personWithCity.Add("Raju", "Siliguri");
-            personWithCity.Add("Subham", "Malda");
-            personWithCity.Add("Samir", "Hyderabad");
-            personWithCity.Add("Ritesh", "Kolkata");
-            foreach (var data in personWithCity)
+            var result = addressBook.Where(x => x.City.Equals(city)).ToList();
+            foreach (var data in result)
             {
-                //Console.WriteLine(data.Key+"\t"+ data.Value);
-                if (city.Contains(data.Value))
-                {
-                    Console.WriteLine("The persons in the city are:" + data.Key + " ");
-                }
+                Console.WriteLine(data.FirstName + " " + data.LastName + " " + data.PhoneNumber + " " + data.Address + " " + data.EmailId + " " + data.State + " " + data.ZipCode); 
             }
         }
         public void ViewPersonByState(string state)
         {
-            Dictionary<string, string> personWithState = new Dictionary<string, string>();
-            //Console.WriteLine("Person\tState");
-            //Console.WriteLine();
-            personWithState.Add("Arpan", "West Bengal");
-            personWithState.Add("Ravi", "Jharkhand");
-            personWithState.Add("Raju", "Telengana");
-            personWithState.Add("Subham", "Maharastra");
-            personWithState.Add("Samir", "West Bengal");
-            personWithState.Add("Ritesh", "Telengana");
-            foreach (var data in personWithState)
+            var result = addressBook.Where(x => x.State.Equals(state)).ToList();
+            foreach (var data in result)
             {
-                //Console.WriteLine(data.Key+"\t"+ data.Value);
-                if (state.Contains(data.Value))
-                {
-                    Console.WriteLine("The persons in the State are:" + data.Key);
-                }
+                Console.WriteLine(data.FirstName + " " + data.LastName + " " + data.PhoneNumber + " " + data.Address + " " + data.EmailId + " " + data.State + " " + data.ZipCode);
             }
         }
         public void PersonCountByCity()
         {
+            int count = 0;
             Console.WriteLine("Enter the name of the city");
             string nameOfCity = Console.ReadLine();
-            ViewPersonByCity(nameOfCity);
-            foreach (var data in personWithCity)
+            foreach (var data in addressBook)
             {
-                if(data.Value.Contains(nameOfCity))
+                if (data.City.Contains(nameOfCity))
                 {
-                    var count = personWithCity.Where(x=>x.Value.ToLower().Equals(nameOfCity)).Count();
-                    Console.WriteLine(count);
+                    count++;
                 }
+            }
+            Console.WriteLine(count+" "+"Persons are in there in "+nameOfCity+" "+"city");
+        }
+        public void SortEntriesByPersonName()
+        {
+            var result = addressBook.OrderBy(x=>x.FirstName).ToList();
+            foreach (var data in result)
+            {
+                Console.WriteLine(data.FirstName + " " + data.LastName + " " + data.PhoneNumber+" "+data.Address+" "+data.EmailId+" "+data.State+" "+data.ZipCode);
             }
         }
     }

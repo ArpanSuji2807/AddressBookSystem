@@ -6,7 +6,7 @@ public class Program
     {
         AddressBook addressBook = new AddressBook();
         bool end = true;
-        Console.WriteLine("1.Add a new unique contact details\n2.Display\n3.Edit contact\n4.Delete Contact\n5.Add Multiple contacts\n6.Edit Dictionary\n7.Delete Dictionary\n8.Search a person in a city\n9.View all the persons by City\n10.View all the persons by State\n11.View Phone number of a person");
+        Console.WriteLine("1.Add a new unique contact details\n2.Display\n3.Edit contact\n4.Delete Contact\n5.Add Multiple contacts\n6.Edit Dictionary\n7.Delete Dictionary\n8.Search a person in a city\n9.View all the persons by City\n10.View all the persons by State\n11.View number of person in a city\n12.Sort entries by person name");
         while ( end )
         {
             Console.WriteLine("Take an option to execute");
@@ -71,6 +71,9 @@ public class Program
                     addressBook.PersonCountByCity();
                     break;
                 case 12:
+                    addressBook.SortEntriesByPersonName();
+                    break;
+                case 13:
                     Console.WriteLine("Enter a valid Choice");
                     break;
                     default: end = false;
