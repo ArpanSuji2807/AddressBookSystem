@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +13,8 @@ namespace AddressBookSystem
         List<Contact> addressBook = new List<Contact>();
         Dictionary<string,List<Contact>> dictionary = new Dictionary<string,List<Contact>>();
         const string TXT_FILE_PATH = @"D:\PracticeProblem\AddressBookSystem\AddressBookSystem\AddressBookSystem\AddressBook1.txt";
+        const string CSV_FILEPATH_IMPORT = @"D:\PracticeProblem\AddressBookSystem\AddressBookSystem\AddressBookSystem\AddressBookImport.csv";
+        const string CSV_FILEPATH_EXPORT = @"D:\PracticeProblem\AddressBookSystem\AddressBookSystem\AddressBookSystem\AddressBookExport.csv";
         public AddressBook()
         {
             Contact address1 = new Contact()
@@ -258,6 +262,28 @@ namespace AddressBookSystem
                 finally
                 {
                     reader.Close();
+                }
+            }
+        }
+        public void ReadOrWriteCSVFile()
+        {
+            using (var reader = new StreamReader(CSV_FILEPATH_IMPORT))
+            {
+                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                {
+                    var records = csv.GetRecords<Contact>().ToList();
+                    Console.WriteLine("After Reading CSV File");
+                    foreach (var data in records)
+                    {
+                        Console.WriteLine(data.FirstName + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.EmailId + " " + data.ZipCode+" "+data.PhoneNumber);
+                    }
+                    using (var writter = new StreamWriter(CSV_FILEPATH_EXPORT))
+                    {
+                        using (var csvExport = new CsvWriter(writter, CultureInfo.InvariantCulture))
+                        {
+                            csvExport.WriteRecords(records);
+                        }
+                    }
                 }
             }
         }
