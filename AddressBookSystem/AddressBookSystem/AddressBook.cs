@@ -1,4 +1,5 @@
 ﻿using CsvHelper;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -15,6 +16,7 @@ namespace AddressBookSystem
         const string TXT_FILE_PATH = @"D:\PracticeProblem\AddressBookSystem\AddressBookSystem\AddressBookSystem\AddressBook1.txt";
         const string CSV_FILEPATH_IMPORT = @"D:\PracticeProblem\AddressBookSystem\AddressBookSystem\AddressBookSystem\AddressBookImport.csv";
         const string CSV_FILEPATH_EXPORT = @"D:\PracticeProblem\AddressBookSystem\AddressBookSystem\AddressBookSystem\AddressBookExport.csv";
+        const string JSON_FILEPATH_EXPORT = @"D:\PracticeProblem\AddressBookSystem\AddressBookSystem\AddressBookSystem\AddressbookExport1.json";
         public AddressBook()
         {
             Contact address1 = new Contact()
@@ -282,6 +284,29 @@ namespace AddressBookSystem
                         using (var csvExport = new CsvWriter(writter, CultureInfo.InvariantCulture))
                         {
                             csvExport.WriteRecords(records);
+                        }
+                    }
+                }
+            }
+        }
+        public void ReadOrWriteJSONFile()
+        {
+            using (var reader = new StreamReader(CSV_FILEPATH_IMPORT))
+            {
+                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                {
+                    var records = csv.GetRecords<Contact>().ToList();
+                    Console.WriteLine("After Reading CSV File");
+                    foreach (var data in records)
+                    {
+                        Console.WriteLine(data.FirstName + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.EmailId + " " + data.ZipCode + " " + data.PhoneNumber);
+                    }
+                    JsonSerializer serializer = new JsonSerializer();
+                    using (var writter = new StreamWriter(JSON_FILEPATH_EXPORT))
+                    {
+                        using (var writer = new JsonTextWriter(writter))
+                        {
+                            serializer.Serialize(writter, records);
                         }
                     }
                 }
