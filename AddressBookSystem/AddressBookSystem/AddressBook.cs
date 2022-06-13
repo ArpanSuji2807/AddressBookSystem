@@ -2,6 +2,8 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -11,6 +13,7 @@ namespace AddressBookSystem
 {
     public class AddressBook
     {
+        private SqlConnection connect;
         List<Contact> addressBook = new List<Contact>();
         Dictionary<string,List<Contact>> dictionary = new Dictionary<string,List<Contact>>();
         const string TXT_FILE_PATH = @"D:\PracticeProblem\AddressBookSystem\AddressBookSystem\AddressBookSystem\AddressBook1.txt";
@@ -43,6 +46,11 @@ namespace AddressBookSystem
             };
             addressBook.Add(address1);
             addressBook.Add(address2);
+        }
+        private void Connection()
+        {
+            string connectingString = "Data Source=(localdb)\\MSSQLLocaldb;Initial Catalog=AddressBookDB";
+            connect = new SqlConnection(connectingString);
         }
         public void AddNewUniqueContactDetailsToAddressBook(string firstName,string lastName)
         {
@@ -310,6 +318,21 @@ namespace AddressBookSystem
                         }
                     }
                 }
+            }
+        }
+        public void RetriveEntriesFromDB()
+        {
+            Connection();
+            SqlCommand command = new SqlCommand("spGetAllEntries", connect);
+            command.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataTable dataTable = new DataTable();
+            connect.Open();
+            adapter.Fill(dataTable);
+            connect.Close();
+            foreach(DataRow row in dataTable.Rows)
+            {
+                Console.WriteLine(row["FirstName"]+", "+row["LastName"]+", "+row["Address"]+", "+row["City"]+", "+row["State"]+", "+row["EmailId"]+", "+row["ZipCode"]+", "+row["PhoneNumber"]);  
             }
         }
     }
