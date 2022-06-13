@@ -103,6 +103,10 @@ public class Program
                     addressBook.UpdateContactOfDB(contact);
                     break;
                 case 19:
+                    string query1 = "select * from AddressBook where Date_Added between cast('2022-02-25' as date) and getdate()";
+                    addressBook.GetContactsFromDate(query1);
+                    break;
+                case 20:
                     Console.WriteLine("Enter a valid Choice");
                     break;
                     default: end = false;

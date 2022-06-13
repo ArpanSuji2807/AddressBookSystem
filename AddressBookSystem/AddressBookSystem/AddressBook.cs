@@ -359,5 +359,19 @@ namespace AddressBookSystem
                 return false;
             }
         }
+        public void GetContactsFromDate(string query)
+        {
+            Connection();
+            SqlCommand command = new SqlCommand(query, connect);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataTable table = new DataTable();
+            connect.Open();
+            adapter.Fill(table);
+            connect.Close();
+            foreach (DataRow row in table.Rows)
+            {
+                Console.WriteLine(row["FirstName"] + ", " + row["LastName"] + ", " + row["Address"] + ", " + row["City"] + ", " + row["State"] + ", " + row["EmailId"] + ", " + row["ZipCode"] + ", " + row["PhoneNumber"]);
+            }
+        }
     }
 }
