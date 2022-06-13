@@ -335,5 +335,29 @@ namespace AddressBookSystem
                 Console.WriteLine(row["FirstName"]+", "+row["LastName"]+", "+row["Address"]+", "+row["City"]+", "+row["State"]+", "+row["EmailId"]+", "+row["ZipCode"]+", "+row["PhoneNumber"]);  
             }
         }
+        public bool UpdateContactOfDB(Contact contact)
+        {
+            Connection();
+            SqlCommand command = new SqlCommand("spUpdateContacts",connect);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@Id", contact.Id);
+            command.Parameters.AddWithValue("@FirstName", contact.FirstName);
+            command.Parameters.AddWithValue("@City", contact.City);
+            command.Parameters.AddWithValue("@ZipCode", contact.ZipCode);
+            connect.Open();
+            int result = command.ExecuteNonQuery();
+            connect.Close();
+            if(result >= 1)
+            {
+                Console.WriteLine("Contacts updated successfully");
+                return true;
+            }
+
+            else
+            {
+                Console.WriteLine("Could not update");
+                return false;
+            }
+        }
     }
 }

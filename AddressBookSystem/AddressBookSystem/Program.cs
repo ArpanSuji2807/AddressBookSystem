@@ -94,6 +94,15 @@ public class Program
                     addressBook.RetriveEntriesFromDB();
                     break;
                 case 18:
+                    Contact contact = new Contact();
+                    Console.WriteLine("Enter First Name, Id , City , Zipcode to Update");
+                    contact.FirstName = Console.ReadLine();
+                    contact.Id = Convert.ToInt32(Console.ReadLine());
+                    contact.City = Console.ReadLine();
+                    contact.ZipCode = Convert.ToInt32(Console.ReadLine());
+                    addressBook.UpdateContactOfDB(contact);
+                    break;
+                case 19:
                     Console.WriteLine("Enter a valid Choice");
                     break;
                     default: end = false;
