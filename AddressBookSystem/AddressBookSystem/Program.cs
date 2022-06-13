@@ -12,7 +12,7 @@ public class Program
             "\n9.View all the persons by City\n10.View all the persons by State\n11.View number of person in a city" +
             "\n12.Sort entries by person name\n13.Sort Entries by city or state\n14.Read or Write Adress book" +
             "\n15.Read or Write CSV File\n16.Read or Write JSON file\n17.Retrive Entries from DataBase\n18.Update the Contacts in DB" +
-            "\n19.Get Contacts from date\n20.Get count by city");
+            "\n19.Get Contacts from date\n20.Get count by city\n21. Add new Contact to DB");
         while ( end )
         {
             Console.WriteLine("Take an option to execute");
@@ -112,6 +112,19 @@ public class Program
                     addressBook.GetContactsByCity(query2);
                     break;
                 case 21:
+                    Contact contact1 = new Contact();
+                    contact1.Id = 2;
+                    contact1.FirstName = "Rajesh";
+                    contact1.LastName = "Kumar";
+                    contact1.Address = "Jalpaiguri";
+                    contact1.City = "Kolkata";
+                    contact1.State = "West Bengal";
+                    contact1.EmailId = "rj@gmai.com";
+                    contact1.ZipCode = 22335;
+                    contact1.PhoneNumber = 665598888;
+                    addressBook.AddNewContact(contact1);
+                    break;
+                case 22:
                     Console.WriteLine("Enter a valid Choice");
                     break;
                     default: end = false;
