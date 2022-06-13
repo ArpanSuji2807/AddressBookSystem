@@ -11,7 +11,8 @@ public class Program
             "\n6.Edit Dictionary\n7.Delete Dictionary\n8.Search a person in a city" +
             "\n9.View all the persons by City\n10.View all the persons by State\n11.View number of person in a city" +
             "\n12.Sort entries by person name\n13.Sort Entries by city or state\n14.Read or Write Adress book" +
-            "\n15.Read or Write CSV File\n16.Read or Write JSON file\n17.Retrive Entries from DataBase");
+            "\n15.Read or Write CSV File\n16.Read or Write JSON file\n17.Retrive Entries from DataBase\n18.Update the Contacts in DB" +
+            "\n19.Get Contacts from date\n20.Get count by city");
         while ( end )
         {
             Console.WriteLine("Take an option to execute");
@@ -107,6 +108,10 @@ public class Program
                     addressBook.GetContactsFromDate(query1);
                     break;
                 case 20:
+                    string query2 = "select COUNT(*) as CityCount, City from AddressBook group by City";
+                    addressBook.GetContactsByCity(query2);
+                    break;
+                case 21:
                     Console.WriteLine("Enter a valid Choice");
                     break;
                     default: end = false;
